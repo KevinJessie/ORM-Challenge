@@ -11,12 +11,8 @@ router.get('/', (req, res) => {
   Category.findAll({
     include: [Product]
   })
-  .then((categories) => {
-    res.json(categories);
-  }
-  )
-
 });
+
 
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
