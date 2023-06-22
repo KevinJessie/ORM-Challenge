@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Tag, Product, ProductTag } = require('../../models');
+const { Tag, Product } = require('../../models');
 
 // The `/api/tags` endpoint
 
-router.get('/', (req, res) => {
+router.get('/', () => {
 
   Tag.findAll({
     attributes: ['id', 'tag_name'],
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 })
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req) => {
 
   Tag.findOne({
     where:{
@@ -32,14 +32,14 @@ router.get('/:id', (req, res) => {
 })
 });
 
-router.post('/', (req, res) => {
+router.post('/', (req) => {
 
   Tag.create({
     tag_name: req.body.tag_name
   })
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', (req) => {
   
     Tag.update(
       {
@@ -53,7 +53,7 @@ router.put('/:id', (req, res) => {
     )
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req) => {
   Tag.destroy({
     where:{
       id: req.params.id
